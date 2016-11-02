@@ -23,7 +23,7 @@ public class Controller {
         model.setSecretValue();
         //System.out.println(model.getSecretValue());
         while (!model.compareValues(inputIntValueWithScanner(sc))){}
-        view.printMessage(View.WIN_MESSAGE);
+        view.printMessage(View.WIN_MESSAGE + model.getSecretValue());
     }
 
     
@@ -113,7 +113,8 @@ public class Controller {
     /**
      * method swaps min and max ranges if necessary
      * @param minBarrier
-     * @param */
+     * @param maxBarrier
+     */
     public void checkInputRange (int minBarrier, int maxBarrier){
     	int temp = 0;
     	if (minBarrier > maxBarrier){
