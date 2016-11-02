@@ -10,23 +10,18 @@ public class TestModel {
     public void createModel(){
         testModel = new Model();
     }
-
+	
+	/**
+	 * Testing of setSecretValue method
+	 * @throws Exception
+	 */
     @Test
     public void randomRangeTest() throws Exception {
-        // Testing of random number's range
-    	int min = 12, max = 45;
-        int value = testModel.getRandomNumber(min,max);
-        Assert.assertTrue(value >= min);
-        Assert.assertTrue(value <= max);
-    }
-
-    @Test
-    public void compareValuesTest() throws Exception {
-        // Testing of compareValues method
-    	testModel.value = 10;
-    	
-    	Assert.assertEquals(testModel.compareValues(12), 2);
-    	Assert.assertEquals(testModel.compareValues(5), 1);
-    	Assert.assertEquals(testModel.compareValues(10), 0);
+    	testModel.setPrimaryBarrier(0, 100);
+    	for (int i=0; i<1000; i++){
+    		testModel.setSecretValue();
+    		Assert.assertTrue(testModel.secretValue>testModel.currentMin);
+    		Assert.assertTrue(testModel.secretValue<testModel.currentMax);
+    	}   		
     }
 }

@@ -2,13 +2,14 @@ import java.util.ArrayList;
 
 public class View {
     // Text's constants
-    public final String INPUT_INT_DATA = "Input your value:";
-    public final String WRONG_INPUT_INT_DATA = "Wrong input! Repeat please! ";
-    public final String WIN_MESSAGE = "BING0!";
-    public final String MORE_MESSAGE = "You need more!";
-    public final String LESS_MESSAGE = "You need less!";
-    public final String REPEAT_MESSAGE = "This number has already been entered!";
-
+    public final static String INPUT_INT_DATA = "Input your value:";
+    public final static String WRONG_INPUT_INT_DATA = "You have to input an integer number! Repeat please! ";
+    public final static String WIN_MESSAGE = "BING0!";
+    public static final String WRONG_RANGE_DATA = "Wrong range! Repeat please! ";
+    public static final String EXIT_MESSAGE = "If you wand to exit - input 000";
+    public static final String END_MESSAGE = "Game over.";
+    
+    
     /**
      * method outputs message to console
      * @param message
@@ -28,8 +29,8 @@ public class View {
     	for(int num : history){  
             System.out.print(num + " ");
         }
-    	System.out.println();
-    	System.out.println("[" + currentMin + "," + currentMax + "]");
+    	printMessage("");
+    	printMessage("(" + currentMin + "," + currentMax + ")");
     }
 
 }

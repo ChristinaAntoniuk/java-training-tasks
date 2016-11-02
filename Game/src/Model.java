@@ -1,62 +1,87 @@
-import java.util.Random;
 import java.util.ArrayList;
 
-
 public class Model {
-	// Class finalized variables
-	public final int MIN_VALUE = 0;
-	public final int MAX_VALUE = 100;
-	
-	//Variables
-	public int value;
+	/**
+	 * The secret value which comes up by random
+	 */
+	public int secretValue;
+	/**
+	 * Current value of min barrier
+	 */
     public int currentMin;
+    /**
+     * Current value of max barrier
+     */
     public int currentMax;
     
-    //Object ArrayList
+    /**
+     * ArrayList which keeps the history of user's input values
+     */
     public ArrayList<Integer> history = new ArrayList<Integer>();
-
-    //Constructor
-    public Model(){
-    	
-    	currentMin = MIN_VALUE;
-    	currentMax = MAX_VALUE;
-    }
     
-    public void setValue(int value) {
-        this.value = value;
-    }
     
     /**
      * method compare user's value with program random value
      * @param num
+     * @return
      */  
     
-    public int compareValues(int num) {
-    	if (num < value) {
-    		currentMin = num;
-    		return 1;
+    public boolean compareValues(int value) {
+    	if(value == secretValue){
+    		return true;
+    	} else if (value < secretValue){
+    		currentMin = value;
+    	} else if (value > secretValue){
+    		currentMax = value;
     	}
-    	if (num > value) {
-    		currentMax = num;
-    		return 2;
-    	}
-    	else return 0;		
+    	return false;
     }
     
     /**
-     * method creates random number in specifically range
-     */  
-    public int getRandomNumber(int MIN_VALUE, int MAX_VALUE){
-    	Random random = new Random();
-    	return (random.nextInt(MAX_VALUE) + MIN_VALUE);
+     * method sets the values of primary barrier
+     * @param currentMin
+     * @param currentMax
+     */
+    
+    public void setPrimaryBarrier(int currentMin, int currentMax){
+        this.currentMin = currentMin;
+        this.currentMax = currentMax;
+    }
+    /**
+     * method creates a random number in the specifically range
+     */
+    public void setSecretValue(){
+    	secretValue = (int)Math.ceil(Math.random() *
+                (currentMax - currentMin -1) + currentMin);
     }
     
-    //Creating history with new user's numbers
-    public int createHistory (int num){
-    	if (!history.contains(num)){
-    		history.add(num);
-    		return 0;
+    /**
+     * method creates the history of user's values
+     * @param num
+     * @return
+     */
+    public void createHistory (int value){
+    	if (!history.contains(value)){
+    		history.add(value);
     	}
-    	return 1;
+    }
+    
+    /**
+     * method closes the program
+     */
+    public void exitGame(){
+    	System.exit(0);
+    }
+    
+    public int getSecretValue() {
+        return secretValue;
+    }
+
+    public int getMinBarrier() {
+        return currentMin;
+    }
+
+    public int getMaxBarrier() {
+        return currentMax;
     }
 }
