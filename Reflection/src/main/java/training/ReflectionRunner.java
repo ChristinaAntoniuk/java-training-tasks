@@ -10,16 +10,41 @@ import java.lang.reflect.Modifier;
 public class ReflectionRunner {
     public static void main(String[] args) throws Exception {
         Class clazz = Class.forName("training.Notebook");
-        Object instance = clazz.newInstance();
-        // Output of class name
+        showClassName(clazz);
+        showMethodsThatUseMethodInfoAnnotation(clazz);
+        showConstructorsAndParameters(clazz);
+        showModifier(clazz);
+    }
+
+    /**
+     * Method outputs the class name.
+     * @param clazz
+     */
+    public static void showClassName(Class clazz){
         System.out.println(clazz.getName());
-        // Output of methods that uses MethodInfo annotation
+    }
+
+    /**
+     * Method outputs the methods that uses MethodInfo annotation.
+     * @param clazz
+     * @throws IllegalAccessException
+     * @throws InstantiationException
+     * @throws InvocationTargetException
+     */
+    public static void showMethodsThatUseMethodInfoAnnotation(Class clazz) throws IllegalAccessException, InstantiationException, InvocationTargetException {
+        Object instance = clazz.newInstance();
         for (Method m : clazz.getMethods()) {
             if (m.isAnnotationPresent(MethodInfo.class)) {
-                System.out.println(m.invoke(instance));
+                System.out.println(m.getName() + ' ' + m.invoke(instance));
             }
         }
-        //Output of method's constructors with their parameters
+    }
+
+    /**
+     * Method outputs constructors of the class with their parameters.
+     * @param clazz
+     */
+    public static void showConstructorsAndParameters(Class clazz){
         Constructor[] constructors = clazz.getConstructors();
         for (Constructor constructor : constructors) {
             Class[] paramTypes = constructor.getParameterTypes();
@@ -28,7 +53,13 @@ public class ReflectionRunner {
             }
             System.out.println(constructor);
         }
-        // Output of class modifier
+    }
+
+    /**
+     * Method outputs the modifier of the class.
+     * @param clazz
+     */
+    public static void showModifier(Class clazz){
         int modifier = clazz.getModifiers();
         if (Modifier.isPublic(modifier)) {
             System.out.println("public");
