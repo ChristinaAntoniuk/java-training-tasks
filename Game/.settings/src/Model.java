@@ -4,20 +4,20 @@ public class Model {
 	/**
 	 * The secret value which comes up by random
 	 */
-	public int secretValue;
+	private int secretValue;
 	/**
 	 * Current value of min barrier
 	 */
-    public int currentMin;
+	private int currentMin;
     /**
      * Current value of max barrier
      */
-    public int currentMax;
+	private int currentMax;
     
     /**
      * ArrayList which keeps the history of user's input values
      */
-    public ArrayList<Integer> history = new ArrayList<Integer>();
+	private ArrayList<Integer> history = new ArrayList<Integer>();
     
     
     /**
@@ -64,6 +64,10 @@ public class Model {
     	if (!history.contains(value)){
     		history.add(value);
     	}
+    }
+    
+    public ArrayList<Integer> getHistory(){
+    	return history;
     }
     
     /**

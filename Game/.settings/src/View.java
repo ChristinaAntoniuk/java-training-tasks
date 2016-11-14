@@ -6,8 +6,6 @@ public class View {
     public final static String WRONG_INPUT_INT_DATA = "You have to input an integer number! Repeat please! ";
     public final static String WIN_MESSAGE = "BING0!";
     public static final String WRONG_RANGE_DATA = "Wrong range! Repeat please! ";
-    public static final String EXIT_MESSAGE = "If you wand to exit - input 'x'";
-    public static final String END_MESSAGE = "Game over.";
     public static final String INPUT_MIN_RANGE = "Please, input min barrier of the range:";
     public static final String INPUT_MAX_RANGE = "Please, input max barrier of the range:";
     

@@ -20,8 +20,8 @@ public class TestModel {
     	testModel.setPrimaryBarrier(0, 100);
     	for (int i=0; i<1000; i++){
     		testModel.setSecretValue();
-    		Assert.assertTrue(testModel.secretValue>testModel.currentMin);
-    		Assert.assertTrue(testModel.secretValue<testModel.currentMax);
+    		Assert.assertTrue(testModel.getSecretValue()>testModel.getMinBarrier());
+    		Assert.assertTrue(testModel.getSecretValue()<testModel.getMaxBarrier());
     	}   		
     }
 }
