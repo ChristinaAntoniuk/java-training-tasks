@@ -35,7 +35,7 @@ public class Controller {
      */
     public int inputIntValueWithScanner(Scanner sc) {
         int res = 0;
-        view.printHistoryAndRange(model.currentMin, model.currentMax, model.history);
+        view.printHistoryAndRange(model.getMinBarrier(), model.getMaxBarrier(), model.getHistory());
         view.printMessage(View.INPUT_INT_DATA);
         while( true ) {
             while (!checkInt(sc)) {
