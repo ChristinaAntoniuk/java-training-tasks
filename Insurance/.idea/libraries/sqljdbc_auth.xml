@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="sqljdbc_auth">
+    <CLASSES />
+    <JAVADOC />
+    <NATIVE>
+      <root url="file://C:/Program Files/Microsoft JDBC Driver 4.2 for SQL Server/sqljdbc_4.2/enu/auth/x64" />
+    </NATIVE>
+    <SOURCES />
+  </library>
+</component>
